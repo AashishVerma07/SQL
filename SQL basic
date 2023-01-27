@@ -1,0 +1,130 @@
+//to create database:
+create database SQLtesting;
+drop database SQLtesting;
+
+//for create table :
+ create table emp(
+ id int,
+ first_name varchar(20),
+ last_name varchar(20),
+ phone_number int,
+ primary key(id)
+ );
+
+ create table company(
+ id int,
+ Company_name varchar(20),
+ location varchar(20),
+ pin_code int,
+ primary key(id)
+ );
+ 
+
+//drop table :
+drop table emp;
+
+//select data from table.
+select * from emp;
+select * from company;
+select company_name from company;
+select first_name  from emp;
+
+//insert querry for company table :
+INSERT INTO public.company (id, company_name, "location", pin_code) 
+VALUES(1, 'TCS', 'Pune', 1004);
+
+INSERT INTO public.company (id, company_name, "location", pin_code) 
+VALUES(2, 'ZOHO', 'Pune', 1005);
+
+INSERT INTO public.company (id, company_name, "location", pin_code) 
+VALUES(3, 'IBM', 'Mumbai', 5220);
+
+INSERT INTO public.company (id, company_name, "location", pin_code) 
+VALUES(4, 'Amazon', 'CG', 4201);
+
+
+//insert querry for emp table :
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(1, 'Ashish', 'Verma', 7772);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(2, 'Ashu', 'Thakur', 0706);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(3, 'Bhavesh', 'kadam', 2255);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(4, 'Hrishi', 'Segde', 7666);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(5, 'Ketan', 'Shinde', 8855);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(6, 'Chirayu', 'zmbo', 8899);
+
+INSERT INTO public.emp (id, first_name, last_name, phone_number) 
+VALUES(7, 'Chirayu', 'zmbo', 9899);
+
+// where condition :
+select * from emp
+where first_name='Ashu';
+
+select * from emp 
+where last_name='kadam' or first_name='Ashish';
+
+select * from company 
+where location='Pune' and company_name='TCS';
+
+select * from emp 
+where not first_name='Ashish'; 
+
+// aggregate function :
+select COUNT (id)
+from company ;
+(Count totle number of ids present)
+
+select avg (phone_number)
+from emp;
+(calculate avg from colum)
+
+select sum (phone_number)
+from emp;
+(calculate sum of all elements)
+
+select min (phone_number)
+from emp;
+(calculate minimum form all elements)
+
+select max (phone_number)
+from emp;
+(calculate maximum from all elements)
+
+select count(id), first_name 
+from emp 
+group by first_name;
+(to show how many same name user,
+we can use group by for finding which data contain how many values
+ex. like we have first_name which is double in table, when we run this query we get 2 count in this frst_name)
+
+
+select sum(phone_number), first_name
+from emp 
+group by first_name 
+having  sum(phone_number)<10000;
+(Here we have find result which is filtered by condition)
+
+
+select count(id), first_name 
+from emp 
+group by first_name
+order by first_name desc;
+(Print value in desending order)
+
+select e.first_name, e.last_name
+from emp as e;
+(Query where we set element for table and use it call other elements)
+
+
+
+
+
